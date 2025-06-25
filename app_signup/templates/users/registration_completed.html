@@ -1,27 +1,7 @@
 {% extends 'users/base.html' %}
 {% block content %}
-
-    <h1>Lista de usuários.</h1>
-
-    <div class="container">
-      <table class="table table-bordered table-striped">
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Criado em:</th>
-        </tr>
-        {% for user in users %}
-        <tr>
-          <td>{{user.user_id}}</td>
-          <td>{{user.username}}</td>
-          <td>{{user.email}}</td>
-          <td>{{user.created_at}}</td>
-        </tr>
-        {% endfor %}
-
-      </table>
-    </div>
+  <body>
+    <h1>Registration complete!!</h1>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

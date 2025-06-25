@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Paracosm{% endblock %}</title>
+
+    <!-- CSS base -->
+    <link rel="stylesheet" href="{% static 'app_signup/css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'app_signup/css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'app_signup/css/components/navbar.css' %}">
+
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    {% include 'myapp/partials/navbar.html' %}
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <script src="{% static 'myapp/js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
