@@ -9,19 +9,27 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
             name='Affiliation',
             fields=[
-                ('affiliation_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'affiliation_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('affiliation_name', models.CharField(max_length=50)),
                 ('foundation_year', models.PositiveIntegerField()),
                 ('is_active', models.BooleanField()),
-                ('dissolution_year', models.PositiveIntegerField(blank=True, null=True)),
-                ('base_of_operations', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'dissolution_year',
+                    models.PositiveIntegerField(blank=True, null=True),
+                ),
+                (
+                    'base_of_operations',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
             ],
             options={
                 'db_table': 'affiliations',
@@ -30,7 +38,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Alias',
             fields=[
-                ('alias_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'alias_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('alias', models.CharField(max_length=50, unique=True)),
             ],
             options={
@@ -40,7 +51,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='BloodStatus',
             fields=[
-                ('blood_status_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'blood_status_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('blood_status', models.CharField(max_length=50)),
             ],
             options={
@@ -50,7 +64,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CharacterType',
             fields=[
-                ('character_type_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'character_type_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=50, unique=True)),
             ],
             options={
@@ -60,7 +77,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Config',
             fields=[
-                ('config_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'config_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=255, unique=True)),
                 ('description', models.TextField()),
                 ('value', models.TextField(blank=True, null=True)),
@@ -73,7 +93,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='GenderIdentity',
             fields=[
-                ('gender_identity_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'gender_identity_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=50, unique=True)),
                 ('description', models.TextField(blank=True, null=True)),
             ],
@@ -84,12 +107,27 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='God',
             fields=[
-                ('god_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'god_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('god_name', models.CharField(max_length=50)),
-                ('power_sphere', models.CharField(blank=True, max_length=100, null=True)),
-                ('animal_symbol', models.CharField(blank=True, max_length=50, null=True)),
-                ('other_symbol', models.CharField(blank=True, max_length=50, null=True)),
-                ('category', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'power_sphere',
+                    models.CharField(blank=True, max_length=100, null=True),
+                ),
+                (
+                    'animal_symbol',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'other_symbol',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'category',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
             ],
             options={
                 'db_table': 'gods',
@@ -98,8 +136,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MaritalStatus',
             fields=[
-                ('marital_status_id', models.AutoField(primary_key=True, serialize=False)),
-                ('marital_status', models.CharField(max_length=50, unique=True)),
+                (
+                    'marital_status_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                (
+                    'marital_status',
+                    models.CharField(max_length=50, unique=True),
+                ),
             ],
             options={
                 'db_table': 'marital_status',
@@ -108,8 +152,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='MutagenicLevel',
             fields=[
-                ('mutagenic_level_id', models.AutoField(primary_key=True, serialize=False)),
-                ('mutagenic_level_name', models.CharField(max_length=50, unique=True)),
+                (
+                    'mutagenic_level_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                (
+                    'mutagenic_level_name',
+                    models.CharField(max_length=50, unique=True),
+                ),
                 ('description', models.TextField(blank=True, null=True)),
             ],
             options={
@@ -119,7 +169,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Mutation',
             fields=[
-                ('mutation_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'mutation_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('description', models.TextField()),
             ],
             options={
@@ -129,16 +182,40 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Pantheon',
             fields=[
-                ('pantheon_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'pantheon_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('pantheon_name', models.CharField(max_length=50)),
                 ('description', models.TextField(blank=True, null=True)),
-                ('leader', models.CharField(blank=True, max_length=50, null=True)),
-                ('overworld', models.CharField(blank=True, max_length=50, null=True)),
-                ('underworld', models.CharField(blank=True, max_length=50, null=True)),
-                ('location', models.CharField(blank=True, max_length=50, null=True)),
-                ('virtues', models.CharField(blank=True, max_length=50, null=True)),
-                ('hubris', models.CharField(blank=True, max_length=50, null=True)),
-                ('purview', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'leader',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'overworld',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'underworld',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'location',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'virtues',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'hubris',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'purview',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
             ],
             options={
                 'db_table': 'pantheons',
@@ -147,8 +224,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Platform',
             fields=[
-                ('platform_id', models.AutoField(primary_key=True, serialize=False)),
-                ('platform_name', models.CharField(max_length=50, unique=True)),
+                (
+                    'platform_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                (
+                    'platform_name',
+                    models.CharField(max_length=50, unique=True),
+                ),
                 ('description', models.TextField(blank=True, null=True)),
             ],
             options={
@@ -158,7 +241,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Species',
             fields=[
-                ('species_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'species_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('species_name', models.CharField(max_length=50, unique=True)),
                 ('description', models.TextField(blank=True, null=True)),
             ],
@@ -169,7 +255,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Subject',
             fields=[
-                ('subject_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'subject_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=50, unique=True)),
                 ('category', models.CharField(max_length=50)),
                 ('description', models.TextField(blank=True, null=True)),
@@ -181,14 +270,20 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='User',
             fields=[
-                ('user_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'user_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('username', models.CharField(max_length=50, unique=True)),
                 ('email', models.CharField(max_length=255, unique=True)),
                 ('password', models.CharField(max_length=255)),
                 ('first_name', models.CharField(max_length=255)),
                 ('last_name', models.CharField(max_length=255)),
                 ('birthdate', models.DateField(blank=True, null=True)),
-                ('picture_url', models.CharField(blank=True, max_length=500, null=True)),
+                (
+                    'picture_url',
+                    models.CharField(blank=True, max_length=500, null=True),
+                ),
                 ('created_at', models.DateTimeField(blank=True, null=True)),
                 ('updated_at', models.DateTimeField(blank=True, null=True)),
             ],
@@ -199,7 +294,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='UserType',
             fields=[
-                ('user_type_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'user_type_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=50, unique=True)),
             ],
             options={
@@ -209,7 +307,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WandCore',
             fields=[
-                ('core_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'core_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('substance', models.CharField(max_length=50)),
                 ('animal', models.CharField(max_length=50)),
                 ('description', models.TextField(blank=True, null=True)),
@@ -221,7 +322,10 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Wandmaker',
             fields=[
-                ('wandmaker_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'wandmaker_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('name', models.CharField(max_length=50)),
                 ('location', models.CharField(max_length=50)),
                 ('shop_name', models.CharField(max_length=100)),
@@ -233,10 +337,16 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WandWood',
             fields=[
-                ('wood_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'wood_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('wood_name', models.CharField(max_length=50, unique=True)),
                 ('description', models.TextField(blank=True, null=True)),
-                ('color', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'color',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
             ],
             options={
                 'db_table': 'wand_woods',
@@ -245,13 +355,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='WizardingSchool',
             fields=[
-                ('wizarding_school_id', models.AutoField(primary_key=True, serialize=False)),
-                ('wizarding_school_name', models.CharField(max_length=50, unique=True)),
-                ('full_name', models.CharField(blank=True, max_length=100, null=True, unique=True)),
+                (
+                    'wizarding_school_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                (
+                    'wizarding_school_name',
+                    models.CharField(max_length=50, unique=True),
+                ),
+                (
+                    'full_name',
+                    models.CharField(
+                        blank=True, max_length=100, null=True, unique=True
+                    ),
+                ),
                 ('location', models.CharField(max_length=50)),
-                ('foundation_year', models.PositiveSmallIntegerField(blank=True, null=True)),
-                ('headmaster', models.CharField(blank=True, max_length=50, null=True)),
-                ('deputy_head', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'foundation_year',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
+                (
+                    'headmaster',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'deputy_head',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
             ],
             options={
                 'db_table': 'wizarding_schools',
@@ -260,25 +390,87 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Character',
             fields=[
-                ('character_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'character_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('given_name', models.CharField(max_length=50)),
-                ('middle_name', models.CharField(blank=True, max_length=50, null=True)),
-                ('surname', models.CharField(blank=True, max_length=50, null=True)),
-                ('status', models.CharField(blank=True, max_length=8, null=True)),
-                ('nickname', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'middle_name',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'surname',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'status',
+                    models.CharField(blank=True, max_length=8, null=True),
+                ),
+                (
+                    'nickname',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('birthdate', models.DateField()),
-                ('birthplace', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'birthplace',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('deathdate', models.DateField(blank=True, null=True)),
-                ('occupation', models.CharField(blank=True, max_length=50, null=True)),
-                ('picture_url', models.ImageField(blank=True, null=True, upload_to='character_img/')),
+                (
+                    'occupation',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'picture_url',
+                    models.ImageField(
+                        blank=True, null=True, upload_to='character_img/'
+                    ),
+                ),
                 ('description', models.TextField(blank=True, null=True)),
                 ('created_at', models.DateTimeField()),
                 ('modified_at', models.DateTimeField()),
-                ('character_type', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.charactertype')),
-                ('gender_identity', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.genderidentity')),
-                ('marital_status', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.maritalstatus')),
-                ('species', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.species')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.user')),
+                (
+                    'character_type',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.charactertype',
+                    ),
+                ),
+                (
+                    'gender_identity',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.genderidentity',
+                    ),
+                ),
+                (
+                    'marital_status',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.maritalstatus',
+                    ),
+                ),
+                (
+                    'species',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.species',
+                    ),
+                ),
+                (
+                    'user',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.user',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'characters',
@@ -287,14 +479,34 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DivineGroup',
             fields=[
-                ('divine_group_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'divine_group_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('group_name', models.CharField(max_length=50)),
                 ('description', models.TextField(blank=True, null=True)),
-                ('foundation_year', models.PositiveSmallIntegerField(blank=True, null=True)),
-                ('dissolution_year', models.PositiveSmallIntegerField(blank=True, null=True)),
-                ('base_of_operation', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'foundation_year',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
+                (
+                    'dissolution_year',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
+                (
+                    'base_of_operation',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('is_active', models.IntegerField(blank=True, null=True)),
-                ('god', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.god')),
+                (
+                    'god',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.god',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'divine_groups',
@@ -303,15 +515,39 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='god',
             name='pantheon',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.pantheon'),
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.DO_NOTHING,
+                to='app_signup.pantheon',
+            ),
         ),
         migrations.CreateModel(
             name='Professor',
             fields=[
-                ('professor_id', models.AutoField(primary_key=True, serialize=False)),
-                ('character', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.character')),
-                ('platform', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.platform')),
-                ('wizarding_school', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.wizardingschool')),
+                (
+                    'professor_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
+                (
+                    'character',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.character',
+                    ),
+                ),
+                (
+                    'platform',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.platform',
+                    ),
+                ),
+                (
+                    'wizarding_school',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.wizardingschool',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'professors',
@@ -320,19 +556,53 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='user',
             name='user_type',
-            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.usertype'),
+            field=models.ForeignKey(
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='app_signup.usertype',
+            ),
         ),
         migrations.CreateModel(
             name='Wand',
             fields=[
-                ('wand_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'wand_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('size', models.FloatField(blank=True, null=True)),
-                ('flexibility', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'flexibility',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('description', models.TextField(blank=True, null=True)),
-                ('made_at', models.PositiveSmallIntegerField(blank=True, null=True)),
-                ('core', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wandcore')),
-                ('wandmaker', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wandmaker')),
-                ('wood', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wandwood')),
+                (
+                    'made_at',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
+                (
+                    'core',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wandcore',
+                    ),
+                ),
+                (
+                    'wandmaker',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wandmaker',
+                    ),
+                ),
+                (
+                    'wood',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wandwood',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'wands',
@@ -341,16 +611,40 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='House',
             fields=[
-                ('house_id', models.AutoField(primary_key=True, serialize=False)),
+                (
+                    'house_id',
+                    models.AutoField(primary_key=True, serialize=False),
+                ),
                 ('house_name', models.CharField(max_length=50)),
                 ('school_system', models.CharField(max_length=50)),
-                ('symbol', models.CharField(blank=True, max_length=50, null=True)),
-                ('founder_first_name', models.CharField(blank=True, max_length=50, null=True)),
-                ('founder_last_name', models.CharField(blank=True, max_length=50, null=True)),
-                ('primary_color', models.CharField(blank=True, max_length=50, null=True)),
-                ('secondary_color', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'symbol',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'founder_first_name',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'founder_last_name',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'primary_color',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'secondary_color',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('description', models.TextField(blank=True, null=True)),
-                ('wizarding_school', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.wizardingschool')),
+                (
+                    'wizarding_school',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.wizardingschool',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'houses',
@@ -361,9 +655,24 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('year_joined', models.PositiveIntegerField()),
-                ('year_left', models.PositiveIntegerField(blank=True, null=True)),
-                ('affiliation', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.affiliation')),
-                ('character', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_signup.character')),
+                (
+                    'year_left',
+                    models.PositiveIntegerField(blank=True, null=True),
+                ),
+                (
+                    'affiliation',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.affiliation',
+                    ),
+                ),
+                (
+                    'character',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.character',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'characters_affiliations',
@@ -374,8 +683,20 @@ class Migration(migrations.Migration):
             name='CharacterAlias',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('alias', models.OneToOneField(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.alias')),
-                ('character', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.character')),
+                (
+                    'alias',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.alias',
+                    ),
+                ),
+                (
+                    'character',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.character',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'characters_aliases',
@@ -387,22 +708,51 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('year_started', models.PositiveSmallIntegerField()),
-                ('year_ended', models.PositiveSmallIntegerField(blank=True, null=True)),
+                (
+                    'year_ended',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
                 ('is_current_leader', models.BooleanField(blank=True)),
-                ('affiliation', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.affiliation')),
-                ('character', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_signup.character')),
+                (
+                    'affiliation',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.affiliation',
+                    ),
+                ),
+                (
+                    'character',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.character',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'affiliations_leadership',
-                'unique_together': {('character', 'affiliation', 'year_started')},
+                'unique_together': {
+                    ('character', 'affiliation', 'year_started')
+                },
             },
         ),
         migrations.CreateModel(
             name='CharacterMutation',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('character', models.OneToOneField(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.character')),
-                ('mutation', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.mutation')),
+                (
+                    'character',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.character',
+                    ),
+                ),
+                (
+                    'mutation',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.mutation',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'characters_mutations',
@@ -413,16 +763,54 @@ class Migration(migrations.Migration):
             name='PlatformMutant',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('manifestation_date', models.DateField(blank=True, null=True)),
-                ('base_of_operation', models.CharField(blank=True, max_length=50, null=True)),
-                ('control_power', models.IntegerField(blank=True, null=True, validators=[django.core.validators.MinValueValidator(0)])),
+                (
+                    'manifestation_date',
+                    models.DateField(blank=True, null=True),
+                ),
+                (
+                    'base_of_operation',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'control_power',
+                    models.IntegerField(
+                        blank=True,
+                        null=True,
+                        validators=[
+                            django.core.validators.MinValueValidator(0)
+                        ],
+                    ),
+                ),
                 ('danger', models.IntegerField(blank=True, null=True)),
                 ('fbi_risk', models.IntegerField(blank=True, null=True)),
-                ('public_identity', models.IntegerField(blank=True, null=True)),
+                (
+                    'public_identity',
+                    models.IntegerField(blank=True, null=True),
+                ),
                 ('reality', models.CharField(max_length=45)),
-                ('character', models.OneToOneField(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.character')),
-                ('mutagenic_level', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.mutageniclevel')),
-                ('mutation', models.ForeignKey(on_delete=django.db.models.deletion.DO_NOTHING, to='app_signup.mutation')),
+                (
+                    'character',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.character',
+                    ),
+                ),
+                (
+                    'mutagenic_level',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.mutageniclevel',
+                    ),
+                ),
+                (
+                    'mutation',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.DO_NOTHING,
+                        to='app_signup.mutation',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'platform_mutante',
@@ -433,22 +821,81 @@ class Migration(migrations.Migration):
             name='PlatformOlympian',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('type', models.CharField(blank=True, max_length=9, null=True)),
+                (
+                    'type',
+                    models.CharField(blank=True, max_length=9, null=True),
+                ),
                 ('year_claimed', models.PositiveSmallIntegerField()),
-                ('camp_assigned', models.CharField(blank=True, max_length=50, null=True)),
+                (
+                    'camp_assigned',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
                 ('powers', models.TextField(blank=True, null=True)),
-                ('favored_weapon', models.CharField(blank=True, max_length=50, null=True)),
-                ('quest_count', models.PositiveIntegerField(blank=True, null=True)),
-                ('character', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='app_signup.character')),
-                ('divine_group', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.divinegroup')),
-                ('god', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.god')),
-                ('legacy_of', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='platformolimpiano_legacy_of_god', to='app_signup.god')),
-                ('pantheon', models.ForeignKey(on_delete=django.db.models.deletion.RESTRICT, to='app_signup.pantheon')),
-                ('platform', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_signup.platform')),
+                (
+                    'favored_weapon',
+                    models.CharField(blank=True, max_length=50, null=True),
+                ),
+                (
+                    'quest_count',
+                    models.PositiveIntegerField(blank=True, null=True),
+                ),
+                (
+                    'character',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        to='app_signup.character',
+                    ),
+                ),
+                (
+                    'divine_group',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.divinegroup',
+                    ),
+                ),
+                (
+                    'god',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.god',
+                    ),
+                ),
+                (
+                    'legacy_of',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        related_name='platformolimpiano_legacy_of_god',
+                        to='app_signup.god',
+                    ),
+                ),
+                (
+                    'pantheon',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.RESTRICT,
+                        to='app_signup.pantheon',
+                    ),
+                ),
+                (
+                    'platform',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.platform',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'platform_olimpiano',
-                'constraints': [models.UniqueConstraint(fields=('platform', 'character'), name='unique_platform_character')],
+                'constraints': [
+                    models.UniqueConstraint(
+                        fields=('platform', 'character'),
+                        name='unique_platform_character',
+                    )
+                ],
             },
         ),
         migrations.CreateModel(
@@ -456,9 +903,30 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
                 ('year_taught', models.PositiveSmallIntegerField()),
-                ('professor', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.professor')),
-                ('subject', models.OneToOneField(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.subject')),
-                ('wizarding_school', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wizardingschool')),
+                (
+                    'professor',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.professor',
+                    ),
+                ),
+                (
+                    'subject',
+                    models.OneToOneField(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.subject',
+                    ),
+                ),
+                (
+                    'wizarding_school',
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wizardingschool',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'subjects_taught',
@@ -469,16 +937,72 @@ class Migration(migrations.Migration):
             name='PlatformPotterian',
             fields=[
                 ('id', models.AutoField(primary_key=True, serialize=False)),
-                ('year_enrolled', models.PositiveSmallIntegerField(blank=True, null=True)),
-                ('boggart', models.CharField(blank=True, max_length=45, null=True)),
-                ('patronus', models.CharField(blank=True, max_length=45, null=True)),
-                ('animagus', models.CharField(blank=True, max_length=45, null=True)),
-                ('blood_status', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.CASCADE, to='app_signup.bloodstatus')),
-                ('character', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='app_signup.character')),
-                ('house', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.house')),
-                ('platform', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='app_signup.platform')),
-                ('wand', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wand')),
-                ('wizarding_school', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.wizardingschool')),
+                (
+                    'year_enrolled',
+                    models.PositiveSmallIntegerField(blank=True, null=True),
+                ),
+                (
+                    'boggart',
+                    models.CharField(blank=True, max_length=45, null=True),
+                ),
+                (
+                    'patronus',
+                    models.CharField(blank=True, max_length=45, null=True),
+                ),
+                (
+                    'animagus',
+                    models.CharField(blank=True, max_length=45, null=True),
+                ),
+                (
+                    'blood_status',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.bloodstatus',
+                    ),
+                ),
+                (
+                    'character',
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.character',
+                    ),
+                ),
+                (
+                    'house',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.house',
+                    ),
+                ),
+                (
+                    'platform',
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to='app_signup.platform',
+                    ),
+                ),
+                (
+                    'wand',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wand',
+                    ),
+                ),
+                (
+                    'wizarding_school',
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.SET_NULL,
+                        to='app_signup.wizardingschool',
+                    ),
+                ),
             ],
             options={
                 'db_table': 'platform_potteriano',

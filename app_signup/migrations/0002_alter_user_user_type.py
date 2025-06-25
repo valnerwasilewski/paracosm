@@ -14,6 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='user',
             name='user_type',
-            field=models.ForeignKey(default=3, null=True, on_delete=django.db.models.deletion.SET_NULL, to='app_signup.usertype'),
+            field=models.ForeignKey(
+                default=3,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                to='app_signup.usertype',
+            ),
         ),
     ]
