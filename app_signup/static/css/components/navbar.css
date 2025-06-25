@@ -1,0 +1,8 @@
+/* components/navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background-color: var(--color-primary);
+  color: white;
+}
