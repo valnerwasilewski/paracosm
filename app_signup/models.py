@@ -1,16 +1,21 @@
+"""
 # This is an auto-generated Django model module.
 # You'll have to do the following manually to clean this up
 
-# * Rearrange models's order
-# * Make sure each model has one filed with primary_key = True
-# * Make sure each ForeignKey and OneToOneField has "on_delete" set to the desired behavior
-# * Remove 'managed = False' lines if you wish to allow Django to create, modify, and delete the table
+- Rearrange models's order
+- Make sure each model has one filed with primary_key = True
+- Make sure each ForeignKey and OneToOneField has "on_delete"
+    set to the desired behavior
+- Remove 'managed = False' lines if you wish to allow Django to create,
+    modify, and delete the table
 
-# Feel free to rename the models, but don't rename db_tables values or field names
+- Feel free to rename the models, but don't rename db_tables
+   values or field names
+"""
 
-from django.db import models
-from django.contrib.auth.hashers import make_password, check_password
+from django.contrib.auth.hashers import check_password, make_password
 from django.core.validators import MinValueValidator
+from django.db import models
 
 
 class Affiliation(models.Model):
@@ -87,7 +92,9 @@ class CharacterType(models.Model):
 
 class Character(models.Model):
     character_id = models.AutoField(primary_key=True)
-    character_type = models.ForeignKey(CharacterType, on_delete=models.DO_NOTHING)
+    character_type = models.ForeignKey(
+        CharacterType, on_delete=models.DO_NOTHING
+    )
     given_name = models.CharField(max_length=50)
     middle_name = models.CharField(max_length=50, blank=True, null=True)
     surname = models.CharField(max_length=50, blank=True, null=True)
@@ -97,14 +104,22 @@ class Character(models.Model):
     birthplace = models.CharField(max_length=50, blank=True, null=True)
     deathdate = models.DateField(blank=True, null=True)
     occupation = models.CharField(max_length=50, blank=True, null=True)
-    picture_url = models.ImageField(upload_to="character_img/", blank=True, null=True)
+    picture_url = models.ImageField(
+        upload_to='character_img/', blank=True, null=True
+    )
     description = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField()
     modified_at = models.DateTimeField()
     user = models.ForeignKey('User', models.CASCADE)
-    marital_status = models.ForeignKey('MaritalStatus', models.DO_NOTHING, blank=True, null=True)
-    species = models.ForeignKey('Species', models.DO_NOTHING, blank=True, null=True)
-    gender_identity = models.ForeignKey('GenderIdentity', models.DO_NOTHING, blank=True, null=True)
+    marital_status = models.ForeignKey(
+        'MaritalStatus', models.DO_NOTHING, blank=True, null=True
+    )
+    species = models.ForeignKey(
+        'Species', models.DO_NOTHING, blank=True, null=True
+    )
+    gender_identity = models.ForeignKey(
+        'GenderIdentity', models.DO_NOTHING, blank=True, null=True
+    )
 
     class Meta:
         db_table = 'characters'
@@ -174,7 +189,8 @@ class House(models.Model):
 
 
 class Leader(models.Model):
-    """ Table used to record organization, groups or other affiliation """
+    """Table used to record organization, groups or other affiliation"""
+
     id = models.AutoField(primary_key=True)
     character = models.OneToOneField(Character, models.CASCADE)
     affiliation = models.ForeignKey(Affiliation, models.CASCADE)
@@ -201,7 +217,7 @@ class MutagenicLevel(models.Model):
     description = models.TextField(blank=True, null=True)
 
     class Meta:
-        db_table = 'mutagenic_level' 
+        db_table = 'mutagenic_level'
 
 
 class Mutation(models.Model):
@@ -241,10 +257,14 @@ class PlatformMutant(models.Model):
     id = models.AutoField(primary_key=True)
     character = models.OneToOneField(Character, on_delete=models.DO_NOTHING)
     mutation = models.ForeignKey(Mutation, on_delete=models.DO_NOTHING)
-    mutagenic_level = models.ForeignKey(MutagenicLevel, on_delete=models.DO_NOTHING, blank=True, null=True)
+    mutagenic_level = models.ForeignKey(
+        MutagenicLevel, on_delete=models.DO_NOTHING, blank=True, null=True
+    )
     manifestation_date = models.DateField(blank=True, null=True)
     base_of_operation = models.CharField(max_length=50, blank=True, null=True)
-    control_power = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0)])
+    control_power = models.IntegerField(
+        blank=True, null=True, validators=[MinValueValidator(0)]
+    )
     danger = models.IntegerField(blank=True, null=True)
     fbi_risk = models.IntegerField(blank=True, null=True)
     public_identity = models.IntegerField(blank=True, null=True)
@@ -263,17 +283,28 @@ class PlatformOlympian(models.Model):
     pantheon = models.ForeignKey(Pantheon, on_delete=models.RESTRICT)
     type = models.CharField(max_length=9, blank=True, null=True)
     year_claimed = models.PositiveSmallIntegerField()
-    divine_group = models.ForeignKey(DivineGroup, on_delete=models.SET_NULL, blank=True, null=True)
+    divine_group = models.ForeignKey(
+        DivineGroup, on_delete=models.SET_NULL, blank=True, null=True
+    )
     camp_assigned = models.CharField(max_length=50, blank=True, null=True)
     powers = models.TextField(blank=True, null=True)
     favored_weapon = models.CharField(max_length=50, blank=True, null=True)
     quest_count = models.PositiveIntegerField(blank=True, null=True)
-    legacy_of = models.ForeignKey(God, on_delete=models.SET_NULL, related_name='platformolimpiano_legacy_of_god', blank=True, null=True)
+    legacy_of = models.ForeignKey(
+        God,
+        on_delete=models.SET_NULL,
+        related_name='platformolimpiano_legacy_of_god',
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         db_table = 'platform_olimpiano'
         constraints = [
-            models.UniqueConstraint(fields=['platform', 'character'], name='unique_platform_character')
+            models.UniqueConstraint(
+                fields=['platform', 'character'],
+                name='unique_platform_character',
+            )
         ]
 
 
@@ -281,10 +312,18 @@ class PlatformPotterian(models.Model):
     id = models.AutoField(primary_key=True)
     platform = models.OneToOneField(Platform, on_delete=models.CASCADE)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
-    wizarding_school = models.ForeignKey('WizardingSchool', on_delete=models.SET_NULL, blank=True, null=True)
-    house = models.ForeignKey(House, on_delete=models.SET_NULL, blank=True, null=True)
-    wand = models.ForeignKey('Wand', on_delete=models.SET_NULL, blank=True, null=True)
-    blood_status = models.ForeignKey(BloodStatus, on_delete=models.CASCADE, blank=True, null=True)
+    wizarding_school = models.ForeignKey(
+        'WizardingSchool', on_delete=models.SET_NULL, blank=True, null=True
+    )
+    house = models.ForeignKey(
+        House, on_delete=models.SET_NULL, blank=True, null=True
+    )
+    wand = models.ForeignKey(
+        'Wand', on_delete=models.SET_NULL, blank=True, null=True
+    )
+    blood_status = models.ForeignKey(
+        BloodStatus, on_delete=models.CASCADE, blank=True, null=True
+    )
     year_enrolled = models.PositiveSmallIntegerField(blank=True, null=True)
     boggart = models.CharField(max_length=45, blank=True, null=True)
     patronus = models.CharField(max_length=45, blank=True, null=True)
@@ -297,7 +336,9 @@ class PlatformPotterian(models.Model):
 
 class Professor(models.Model):
     professor_id = models.AutoField(primary_key=True)
-    wizarding_school = models.ForeignKey('WizardingSchool', on_delete=models.CASCADE)
+    wizarding_school = models.ForeignKey(
+        'WizardingSchool', on_delete=models.CASCADE
+    )
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     platform = models.ForeignKey(Platform, on_delete=models.CASCADE)
 
@@ -326,9 +367,15 @@ class Subject(models.Model):
 
 class SubjectTaught(models.Model):
     id = models.AutoField(primary_key=True)
-    subject = models.OneToOneField(Subject, on_delete=models.SET_NULL, null=True)
-    professor = models.ForeignKey(Professor, on_delete=models.SET_NULL, null=True)
-    wizarding_school = models.ForeignKey('WizardingSchool', on_delete=models.SET_NULL, null=True)
+    subject = models.OneToOneField(
+        Subject, on_delete=models.SET_NULL, null=True
+    )
+    professor = models.ForeignKey(
+        Professor, on_delete=models.SET_NULL, null=True
+    )
+    wizarding_school = models.ForeignKey(
+        'WizardingSchool', on_delete=models.SET_NULL, null=True
+    )
     year_taught = models.PositiveSmallIntegerField()
 
     class Meta:
@@ -353,15 +400,20 @@ class User(models.Model):
     last_name = models.CharField(max_length=255)
     birthdate = models.DateField(blank=True, null=True)
     picture_url = models.CharField(max_length=500, blank=True, null=True)
-    created_at = models.DateTimeField(blank=True, null=True)
-    updated_at = models.DateTimeField(blank=True, null=True)
-    user_type = models.ForeignKey(UserType, on_delete=models.SET_DEFAULT, default=3)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    is_active = models.BooleanField(default=True)
+    user_type = models.ForeignKey(
+        UserType, on_delete=models.SET_DEFAULT, default=3
+    )
 
     def __str__(self):
-        return f"{self.username} ({self.email})"
+        return f'{self.username} ({self.email})'
 
     def save(self, *args, **kwargs):
-        if not self.pk or not check_password(self.password, User.objects.get(pk=self.pk).password):
+        if not self.pk or not check_password(
+            self.password, User.objects.get(pk=self.pk).password
+        ):
             self.password = make_password(self.password)
         super().save(*args, **kwargs)
 
@@ -369,14 +421,12 @@ class User(models.Model):
     def create_user(cls, username, email, password):
         """
         Method for a profile create.
-        
+
         """
         hashed_passowrd = make_password(password)
         user = cls(username=username, email=email, password=password)
         user.save()
         return user
-
-
 
     class Meta:
         db_table = 'users'
@@ -415,7 +465,9 @@ class Wandmaker(models.Model):
 class Wand(models.Model):
     wand_id = models.AutoField(primary_key=True)
     wood = models.ForeignKey(WandWood, on_delete=models.SET_NULL, null=True)
-    wandmaker = models.ForeignKey(Wandmaker, on_delete=models.SET_NULL, null=True)
+    wandmaker = models.ForeignKey(
+        Wandmaker, on_delete=models.SET_NULL, null=True
+    )
     core = models.ForeignKey(WandCore, on_delete=models.SET_NULL, null=True)
     size = models.FloatField(blank=True, null=True)
     flexibility = models.CharField(max_length=50, blank=True, null=True)
@@ -429,7 +481,9 @@ class Wand(models.Model):
 class WizardingSchool(models.Model):
     wizarding_school_id = models.AutoField(primary_key=True)
     wizarding_school_name = models.CharField(unique=True, max_length=50)
-    full_name = models.CharField(unique=True, max_length=100, blank=True, null=True)
+    full_name = models.CharField(
+        unique=True, max_length=100, blank=True, null=True
+    )
     location = models.CharField(max_length=50)
     foundation_year = models.PositiveSmallIntegerField(blank=True, null=True)
     headmaster = models.CharField(max_length=50, blank=True, null=True)
