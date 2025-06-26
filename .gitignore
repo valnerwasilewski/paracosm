@@ -1,6 +1,11 @@
 # Internal files
 settings.py
 tables_managment.sql
+config.toml
+settings.json
+
+.vscode/
+test_comments.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
